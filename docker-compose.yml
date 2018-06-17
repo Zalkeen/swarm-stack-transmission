@@ -1,0 +1,17 @@
+version: '3'
+services:
+  daemon:
+    image: dperson/transmission:${ARCH}
+    volumes:
+      - ${TRANSMISSION_VOLUME_CONFIG:-./volumes/config}:/var/lib/transmission-daemon/.config/transmission-daemon
+      - ${TRANSMISSION_VOLUME_WATCH:-./volumes/watch}:/var/lib/transmission-daemon/watch
+      - ${TRANSMISSION_VOLUME_DOWNLOADS:-./volumes/downloads}:/var/lib/transmission-daemon/downloads
+    environment:
+      - USERID=${TRANSMISSION_ID_USER:-0}
+      - GROUPID=${TRANSMISSION_ID_GROUP:-0}
+      - TZ=${TRANSMISSION_TZ:-CST}
+      - TRUSER=${TRANSMISSION_GUI_USER:-transmission}
+      - TRPASSWD=${TRANSMISSION_GUI_PASSWD:-changeme}
+    ports:
+      - ${TRANSMISSION_PORT_HTTP:-9091}:9091
+      - ${TRANSMISSION_PORT:-51413}:51413
