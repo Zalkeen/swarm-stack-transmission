@@ -1,7 +1,7 @@
 version: '3'
 services:
   daemon:
-    image: dperson/transmission:${ARCH}
+    image: dperson/transmission:${ARCH:-latest}
     volumes:
       - ${TRANSMISSION_VOLUME_CONFIG:-./volumes/config}:/var/lib/transmission-daemon/.config/transmission-daemon
       - ${TRANSMISSION_VOLUME_WATCH:-./volumes/watch}:/var/lib/transmission-daemon/watch
