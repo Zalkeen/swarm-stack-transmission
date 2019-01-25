@@ -1,11 +1,11 @@
 version: '3'
 services:
   daemon:
-    image: dperson/transmission:${ARCH:-latest}
+    image: lsioarmhf/transmission
     volumes:
-      - ${TRANSMISSION_VOLUME_CONFIG:-./volumes/config}:/var/lib/transmission-daemon/.config/transmission-daemon
-      - ${TRANSMISSION_VOLUME_WATCH:-./volumes/watch}:/var/lib/transmission-daemon/watch
-      - ${TRANSMISSION_VOLUME_DOWNLOADS:-./volumes/downloads}:/var/lib/transmission-daemon/downloads
+      - ${TRANSMISSION_VOLUME_CONFIG:-./volumes/config}:/config
+      - ${TRANSMISSION_VOLUME_WATCH:-./volumes/watch}:/watch
+      - ${TRANSMISSION_VOLUME_DOWNLOADS:-./volumes/downloads}:/downloads
     environment:
       - USERID=${TRANSMISSION_ID_USER:-0}
       - GROUPID=${TRANSMISSION_ID_GROUP:-0}
