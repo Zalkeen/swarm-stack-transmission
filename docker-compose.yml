@@ -1,7 +1,7 @@
 version: '3'
 services:
   daemon:
-    image: lsioarmhf/transmission
+    image: linuxserver/transmission
     volumes:
       - ${TRANSMISSION_VOLUME_CONFIG:-./volumes/config}:/config
       - ${TRANSMISSION_VOLUME_WATCH:-./volumes/watch}:/watch
